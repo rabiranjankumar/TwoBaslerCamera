@@ -8,7 +8,6 @@
     using System.Drawing.Imaging;
     using System.Linq;
     using TwoBaslerCamera.Controllers;
-
     /// <summary>
     /// Defines the <see cref="BaslerCameraApiModule" />.
     /// </summary>
@@ -18,38 +17,31 @@
         /// Defines the c_maxCamerasToUse.
         /// </summary>
         internal const int c_maxCamerasToUse = 5;
-
         //  static Persistance persistance = new Persistance();
         /// <summary>
         /// Defines the cameras.
         /// </summary>
         internal static List<Camera> cameras = new List<Camera>();
-
         /// <summary>
         /// Defines the pxConvert.
         /// </summary>
         internal static PixelDataConverter pxConvert = new PixelDataConverter();
-
         /// <summary>
         /// Defines the camera_event_counter.
         /// </summary>
         internal static int camera_event_counter = 0;
-
         /// <summary>
         /// Defines the cpp.
         /// </summary>
         internal static Algo.Class1 cpp = new Algo.Class1();
-
         /// <summary>
         /// Defines the _LogWriter.
         /// </summary>
         internal static LogWriter _LogWriter = new LogWriter();
-
         /// <summary>
         /// Gets the ExposureTimeAbs.
         /// </summary>
         public static double ExposureTimeAbs { get; private set; } = 5000.0;
-
         /// <summary>
         /// The initialize_camera.
         /// </summary>
@@ -72,7 +64,6 @@
                 try
                 {
                     cameras.ForEach(camera => camera.Open());
-
                 }
                 catch (Exception exp)
                 {
@@ -106,29 +97,20 @@
                     // camera.Parameters[PLCamera.TriggerSource].SetValue(PLCamera.TriggerSource.Line1);
                     camera.Parameters[PLCamera.TriggerMode].SetValue(PLCamera.TriggerMode.On);
                 }
-
                 //cameras[0].Parameters[PLCamera.TriggerSelector].SetValue(PLCamera.TriggerSelector.FrameStart);
                 //cameras[0].Parameters[PLCamera.TriggerSource].SetValue(PLCamera.TriggerSource.Line1);
                 //cameras[0].Parameters[PLCamera.TriggerMode].SetValue(PLCamera.TriggerMode.On);
-
-
                 //cameras[0].Parameters[PLCamera.TriggerSelector].SetValue(PLCamera.TriggerSelector.FrameStart);
                 //cameras[0].Parameters[PLCamera.TriggerSource].SetValue(PLCamera.TriggerSource.Software);
                 //cameras[0].Parameters[PLCamera.TriggerMode].SetValue(PLCamera.TriggerMode.On);
-
-
-
-
             }//try block
             catch (Exception e)
             {
-
                 _LogWriter.LogWrite("No GigE cameras present. ");
                 _LogWriter.LogWrite(e.Message);
                 Console.Error.WriteLine("Exception: {0}", e.Message);
                 if (e.Message.Equals("No GigE cameras present."))
                     Program.statring_page.updateLbl("No GigE cameras present.", Color.Red);
-
                 return false;
             }//catch block 
             // load setting files
@@ -139,9 +121,7 @@
                 Console.WriteLine("maximum packet size " + camera.Parameters[PLCamera.GevSCPSPacketSize].GetMaximum());//16404
                 camera.Parameters[PLCamera.GevSCPSPacketSize].SetValue(9000);
                 Console.WriteLine("GevSCPSPacketSize  " + camera.Parameters[PLCamera.GevSCPSPacketSize].GetValue());//220
-
                 camera.Parameters[PLCamera.ExposureTimeAbs].SetValue(ExposureTimeAbs);
-
             }
             foreach (Camera camera in cameras)
             {
@@ -175,7 +155,6 @@
             }//for each 
             return true;
         }
-
         /// <summary>
         /// The GrabResult2Bmp.
         /// </summary>
@@ -194,13 +173,11 @@
             //b.Save("testbmp.bmp");
             return b;
         }
-
         // Example of an image event handler.
         /// <summary>
         /// Defines the sw.
         /// </summary>
         internal static Stopwatch sw = new Stopwatch();
-
         /// <summary>
         /// The OnImageGrabbed_one.
         /// </summary>
@@ -208,7 +185,6 @@
         /// <param name="e">The e<see cref="ImageGrabbedEventArgs"/>.</param>
         private static void OnImageGrabbed_one(Object sender, ImageGrabbedEventArgs e)
         {
-
             //sw.Stop();
             //long time = sw.ElapsedMilliseconds;
             //System.Console.Write("\nElapsed millisecond : " + time);
@@ -221,20 +197,13 @@
                 byte[] buffer = grabResult.PixelData as byte[];
                 Bitmap op = (Bitmap)GrabResult2Bmp(grabResult).Clone();
                 string result = cpp.ProcessImage_on_inputimage_one(op);
-
                 // do software trigger to second 
                 cameras[1].Parameters[PLCamera.TriggerSoftware].Execute();
-
-
                 //true means part is ok 
                 if (TwoBaslerCamera.Service.GlobalItems.ok_ng_piece == false)
                 {
                     setCameraonNg();
                 }
-
-
-
-
                 Program.statring_page.updatePicBox(op, 1);
             }
             else
@@ -242,7 +211,6 @@
                 Console.WriteLine("Error: {0} {1}", grabResult.ErrorCode, grabResult.ErrorDescription);
             }
         }
-
         /// <summary>
         /// The OnImageGrabbed_two.
         /// </summary>
@@ -259,8 +227,6 @@
                 byte[] buffer = grabResult.PixelData as byte[];
                 Bitmap op = (Bitmap)GrabResult2Bmp(grabResult).Clone();
                 string result = cpp.ProcessImage_on_inputimage_two(op);
-
-
                 //#region   ------plc code
                 ////true means part is ok 
                 //if (TwoBaslerCamera.Service.GlobalItems.ok_ng_piece == false)
@@ -268,7 +234,6 @@
                 //    setCameraonNg();
                 //}
                 //#endregion
-
                 Program.statring_page.updatePicBox(op, 2);
             }
             else
@@ -276,7 +241,6 @@
                 Console.WriteLine("Error: {0} {1}", grabResult.ErrorCode, grabResult.ErrorDescription);
             }
         }
-
         /// <summary>
         /// The OnImageGrabbed_three.
         /// </summary>
@@ -302,7 +266,6 @@
                 Console.WriteLine("Error: {0} {1}", grabResult.ErrorCode, grabResult.ErrorDescription);
             }
         }
-
         /// <summary>
         /// The OnImageGrabbed_four.
         /// </summary>
@@ -327,7 +290,6 @@
                 Console.WriteLine("Error: {0} {1}", grabResult.ErrorCode, grabResult.ErrorDescription);
             }
         }
-
         /// <summary>
         /// The do_software_trigger.
         /// </summary>
@@ -338,7 +300,6 @@
                 camera.Parameters[PLCamera.TriggerSoftware].Execute();
             }
         }
-
         /// <summary>
         /// The set_hardware_trigger.
         /// </summary>
@@ -349,7 +310,6 @@
                 camera.Parameters[PLCamera.TriggerSource].SetValue(PLCamera.TriggerSource.Line1);
             }// for loop 
         }
-
         /// <summary>
         /// The set_software_trigger.
         /// </summary>
@@ -360,7 +320,6 @@
                 camera.Parameters[PLCamera.TriggerSource].SetValue(PLCamera.TriggerSource.Software);
             }// for loop 
         }
-
         /// <summary>
         /// The stop_camera.
         /// </summary>
@@ -386,7 +345,6 @@
                 Console.Error.WriteLine("Exception: {0}", e.Message);
             }
         }
-
         /// <summary>
         /// The change_exposer.
         /// </summary>
@@ -402,24 +360,19 @@
                 Console.WriteLine(" raw  " + camera.Parameters[PLCamera.ExposureTimeRaw].ToString());
             }
         }
-
         /// <summary>
         /// Defines the truefalse.
         /// </summary>
         internal static bool truefalse = false;
-
         /// <summary>
         /// The setCameraonNg.
         /// </summary>
         public static void setCameraonNg()
         {
-
             foreach (Camera camera in cameras)
             {
                 try
                 {
-
-
                     camera.Parameters[PLCamera.LineSelector].SetValue(PLCamera.LineSelector.Line1);
                     camera.Parameters[PLCamera.LineMode].SetValue(PLCamera.LineMode.Input);
                     camera.Parameters[PLCamera.LineFormat].SetValue(PLCamera.LineFormat.OptoCoupled);
@@ -428,12 +381,10 @@
                     camera.Parameters[PLCamera.UserOutputValue].SetValue(true);
                     camera.Parameters[PLCamera.UserOutputValue].SetValue(false);
                     Console.Error.WriteLine("pulse sent for : {0}", camera.CameraInfo[CameraInfoKey.SerialNumber]);
-
                 }
                 catch (Exception exp)
                 {
                     Console.Error.WriteLine("Exception: {0}", exp.Message);
-
                 }//          
             }//for each loop
         }
