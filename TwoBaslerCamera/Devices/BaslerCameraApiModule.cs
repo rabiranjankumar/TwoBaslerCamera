@@ -381,6 +381,7 @@
                     camera.Parameters[PLCamera.UserOutputValue].SetValue(true);
                     camera.Parameters[PLCamera.UserOutputValue].SetValue(false);
                     Console.Error.WriteLine("pulse sent for : {0}", camera.CameraInfo[CameraInfoKey.SerialNumber]);
+                    Console.Error.WriteLine(" rabiranjan kumar ");
                 }
                 catch (Exception exp)
                 {
