@@ -1,0 +1,52 @@
+
+
+C:\opencv348\build\include      c++ genera
+
+
+linker general
+C:\opencv348\build\x64\vc15\lib
+
+
+opencv_world348.lib
+
+
+
+
+
+
+i  have added nilhomn json using nuget browser
+ i have added boost using nuget browser 
+
+   you can see at below director 
+
+   
+E:\project\ClientApp\packages>dir
+ Volume in drive E has no label.
+ Volume Serial Number is C250-2150
+
+ Directory of E:\project\ClientApp\packages
+
+21-07-2020  14:10    <DIR>          .
+21-07-2020  14:10    <DIR>          ..
+21-07-2020  14:11    <DIR>          boost.1.72.0.0
+21-07-2020  11:44    <DIR>          nlohmann.json.3.7.3
+               0 File(s)              0 bytes
+               4 Dir(s)  119,365,611,520 bytes free
+
+E:\project\ClientApp\packages>
+
+
+
+
+
+
+
+			//  testing some algo 
+			Console::WriteLine("Exe directory "+get_system_string(persistance.GetExeDir()));
+			Console::WriteLine("working directory "+get_system_string(persistance.GetWorkingDir()));
+			Console::WriteLine("image directory "+get_system_string(persistance.get_image_dir()));
+
+
+		/*	    exe directory E : \project\ClientApp\ClientApp\bin\x64\Release\
+				working directory E : \project\ClientApp\ClientApp\bin\x64\Release\
+				image directory E : \project\ClientApp\ClientApp\bin\x64\Release\   */

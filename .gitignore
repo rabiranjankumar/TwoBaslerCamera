@@ -1,0 +1,13 @@
+/.vs
+bin
+packages
+ppt.pptx
+Pylon_csharp.chm
+x64
+holder_bottom.cpp
+bulb holder surface.cpp
+TwoBaslerCamera\bin
+TwoBaslerCamera\packages
+TwoBaslerCamera\obj
+TwoBaslerCamera\publish
+

@@ -1,0 +1,9 @@
+C:\Users\addin\Source\Repos\TwoBaslerCamera\TwoBaslerCamera\bin\Debug\TwoBaslerCamera.exe.config
+C:\Users\addin\Source\Repos\TwoBaslerCamera\TwoBaslerCamera\bin\Debug\TwoBaslerCamera.exe
+C:\Users\addin\Source\Repos\TwoBaslerCamera\TwoBaslerCamera\bin\Debug\TwoBaslerCamera.pdb
+C:\Users\addin\Source\Repos\TwoBaslerCamera\TwoBaslerCamera\obj\Debug\TwoBaslerCamera.csprojAssemblyReference.cache
+C:\Users\addin\Source\Repos\TwoBaslerCamera\TwoBaslerCamera\obj\Debug\TwoBaslerCamera.Form1.resources
+C:\Users\addin\Source\Repos\TwoBaslerCamera\TwoBaslerCamera\obj\Debug\TwoBaslerCamera.Properties.Resources.resources
+C:\Users\addin\Source\Repos\TwoBaslerCamera\TwoBaslerCamera\obj\Debug\TwoBaslerCamera.csproj.GenerateResource.cache
+C:\Users\addin\Source\Repos\TwoBaslerCamera\TwoBaslerCamera\obj\Debug\TwoBaslerCamera.exe
+C:\Users\addin\Source\Repos\TwoBaslerCamera\TwoBaslerCamera\obj\Debug\TwoBaslerCamera.pdb
